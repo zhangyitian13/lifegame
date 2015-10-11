@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset='utf-8'>
+		<title>Using Mocha to test</title>
+		<link rel="stylesheet" href="./node_modules/mocha/mocha.css">
+    </head>
+    <body>
+		<div id="mocha"></div>
+		<script src="./node_modules/mocha/mocha.js"></script>
+		<script>mocha.setup('bdd');</script>
+		<script src="./node_modules/chai/chai.js"></script>
+		<script>
+			var assert = chai.assert;
+			var expect = chai.expect;
+			var should = chai.should();
+		</script>
+		<script src = "test/test.js"></script>
+		<script>
+			if (window.mochaPhantomJS){
+				mochaPhantomJS.run();
+			} else {
+				mocha.run();
+			}
+		</script>
+		<div style = "width :900px; margin: 0px auto">
+			<canvas id = "showwindow" width = "500" height = "500" style = "border: solid 2px #CCCCCC" onmousedown = "startsetwall(event)" onmouseup = "endsetwall(event)" onmousemove = "setwall(event)">
+			</canvas>
+		</div>
+		<div>
+			<button id = "button_set" style = "width: 100px; height: 40px" onclick = "clicksetwall()">
+			设置墙壁
+			</button>
+			<button id = "button_start" style = "width: 100px; height: 40px" onclick = "startgame()">
+			开始游戏
+			</button>
+			<div>
+			细胞密度
+			<input id = "input_density" value = "细胞密度：输入0~1的数">
+			</input>
+			<div>
+			<div>
+			帧率
+			<input id = "input_fps" value = "刷新帧率：默认10">
+			</input>
+			<div>
+			<button id = "save" style = "width: 100px; height: 40px" onclick = "savesetting()">
+			保存设置
+			</button>
+		</div>
+    </body>
+</html>
+<script>
+var timedelay = 100;
+var mouseflag = 0;
+var lifedensity = 0.2;
+var length = 20;              //细胞边长20px
+var c_width = 700;            //画布宽高
+var c_height = 500;
+var c_offset_x = 0;           //相对于大地图的细胞位置数偏移
+var c_offset_y = 0;
+var mapsize = 400;
+var map = new Array();        //大地图
+var timer;
+for(var i = 0; i < mapsize; i++){ 
+map[i]=new Array(); 
+for(var j = 0; j < mapsize; j++){ 
+map[i][j] = 0;
+}
+}
+var newmap = new Array();        //大地图
+for(var i = 0; i < mapsize; i++){ 
+newmap[i]=new Array(); 
+for(var j = 0; j < mapsize; j++){ 
+newmap[i][j] = 0;
+}
+}
+</script>
+
+
